@@ -80,7 +80,6 @@ def play_again():
         button[r][c]["text"]=" "
         cant[r][c]=0
         count=0
-       
     
 
 def goodbye():
@@ -115,5 +114,3 @@ C.pack()
 #result.pack()
 
 start.mainloop()
-
-#switched to new branch play-again
