@@ -1,4 +1,3 @@
-
 import Tkinter
 import tkMessageBox
 from Tkinter import *
@@ -73,46 +72,19 @@ def change(x,y):
               break
           elif flag==1:
               break
-            
-def goodbye():
-    start.destroy()
-def script():
- 
- 
- count=0
- cant = [[0 for r in range(3)]for c in range(3)]
-
- for r in range(3):
-    for c in range(3):
+     
+def play_again():
+    global count
+    for r in range(3):
+       for c in range(3):
+        button[r][c]["text"]=" "
         cant[r][c]=0
-
- flag=0
-
- button_frame.columnconfigure(0,weight=1)
- button_frame.columnconfigure(1,weight=1)
- button_frame.rowconfigure(0,weight=1)
- button_frame.rowconfigure(1,weight=1)
- button_frame.rowconfigure(2,weight=1)
-
- button = [[0 for r in range(3)]for c in range(3)]
- button_number = 1
- for r in range(3):
-    for c in range(3):
-        button[r][c]= Tkinter.Button(button_frame, text = button_number, command = lambda a=r,b=c:change(a,b))
-        #button[r][c].grid(row=r, column=c, sticky="ew")
-        button[r][c].grid(row=r,column=c,sticky=Tkinter.W+Tkinter.E)
-        button_number += 1
-
-
-
-
- #result=Tkinter.Button(start,text="Result",command = result)
- #result.pack()
-
+        count=0
        
     
 
-
+def goodbye():
+    start.destroy()
 
 
 button_frame.columnconfigure(0,weight=1)
@@ -133,7 +105,7 @@ for r in range(3):
 
 
 
-playagain=Tkinter.Button(start,text="Play Again!",command = script)
+playagain=Tkinter.Button(start,text="Play Again!",command = play_again)
 playagain.pack()
 
 C = Tkinter.Button(start, text="Quit", command = goodbye)
