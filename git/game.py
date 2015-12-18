@@ -19,11 +19,11 @@ button_frame.pack(fill=Tkinter.X,side=Tkinter.BOTTOM)
 
 def result(x):
   if x==1:
-      result["text"]="Player 1 wins."
+      print "Computer wins."
   elif x==2:
-      result["text"]="Player 2 wins."
+      print "Player wins."
   else:
-      result["text"]="No winner."
+      print "No winner."
 
 def change(x,y):
     global flag
@@ -38,49 +38,55 @@ def change(x,y):
      if count==1:
         if cant[1][1]==0:
             button[1][1]["text"]="X"
-            cant[1][1]=1
+            cant[1][1]+=1
             t=1
      if count>2:
         for a in range(3):
-          if button[a][0]["text"]==button[a][1]["text"] and button[a][1]["text"]==button[a][2]["text"]:
+          if button[a][0]["text"]==button[a][1]["text"] and button[a][1]["text"]==button[a][2]["text"] and flag==0:
             if button[a][0]["text"]=="X":
               print "Computer wins."
               flag=1
+              
             elif button[a][0]["text"]=="O":
               print "Player wins."
               flag=1
-          elif button[0][a]["text"]==button[1][a]["text"] and button[1][a]["text"]==button[2][a]["text"]:
+              
+          elif button[0][a]["text"]==button[1][a]["text"] and button[1][a]["text"]==button[2][a]["text"] and flag==0:
             if button[0][a]["text"]=="X":
               print "Computer wins."
               flag=1
+              
             elif button[0][a]["text"]=="O":
               print "Player wins."
               flag=1
-          elif button[0][0]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][2]["text"]:
+              
+        if button[0][0]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][2]["text"] and flag==0:
             if button[0][0]["text"]=="X":
               print "Computer wins."
               flag=1
+            
             elif button[0][0]["text"]=="O":
               print "Player wins."
               flag=1
-            break
-          elif button[0][2]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][0]["text"]:
+              
+        elif button[0][2]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][0]["text"] and flag==0:
             if button[0][2]["text"]=="X":
               print "Computer wins."
               flag=1
+             
             elif button[0][2]["text"]=="O":
               print "Player wins."
               flag=1
-            break
-          elif count==5:
+              
+        elif count==5 and flag==0:
               print "It's a draw."
               flag=1
-              break
-          elif flag==1:
-              break
+             
+
+    
      if count>=2 and flag==0:
-        for a in range(3):
-         if t==0:
+       for a in range(3):
+          if t==0:
            if button[a][0]["text"]==button[a][1]["text"]=="X" or button[a][1]["text"]==button[a][2]["text"]=="X" or button[a][0]["text"]==button[a][2]["text"]=="X":
               for k in range(3):
                 if cant[a][k]==0:
@@ -95,14 +101,16 @@ def change(x,y):
                     cant[k][a]+=1
                     t=1
                     break
-           elif button[0][0]["text"]==button[1][1]["text"]=="X" or button[1][1]["text"]==button[2][2]["text"]=="X" or button[0][0]["text"]==button[2][2]["text"]=="X":
+       if t==0:
+           if button[0][0]["text"]==button[1][1]["text"]=="X" or button[1][1]["text"]==button[2][2]["text"]=="X" or button[0][0]["text"]==button[2][2]["text"]=="X":
             for k in range(3):
                 if cant[k][k]==0:
                     button[k][k]["text"]="X"
                     cant[k][k]+=1
                     t=1
                     break
-           elif button[0][2]["text"]==button[1][1]["text"]=="X" or button[1][1]["text"]==button[2][0]["text"]=="X" or button[0][2]["text"]==button[2][0]["text"]=="X" :
+       if t==0:
+         if button[0][2]["text"]==button[1][1]["text"]=="X" or button[1][1]["text"]==button[2][0]["text"]=="X" or button[0][2]["text"]==button[2][0]["text"]=="X" :
             if cant[0][2]==0:
                button[0][2]["text"]="X"
                cant[0][2]+=1
@@ -116,7 +124,9 @@ def change(x,y):
                button[2][0]["text"]="X"
                cant[2][0]+=1
                t=1   
-           elif button[a][0]["text"]==button[a][1]["text"]=="O" or button[a][1]["text"]==button[a][2]["text"]=="O" or button[a][0]["text"]==button[a][2]["text"]=="O":
+       for a in range(3):
+          if t==0:
+           if button[a][0]["text"]==button[a][1]["text"]=="O" or button[a][1]["text"]==button[a][2]["text"]=="O" or button[a][0]["text"]==button[a][2]["text"]=="O":
               for k in range(3):
                 if cant[a][k]==0:
                     button[a][k]["text"]="X"
@@ -130,14 +140,16 @@ def change(x,y):
                     cant[k][a]+=1
                     t=1
                     break
-           elif button[0][0]["text"]==button[1][1]["text"]=="O" or button[1][1]["text"]==button[2][2]["text"]=="O" or button[0][0]["text"]==button[2][2]["text"]=="O":
+       if t==0:
+           if button[0][0]["text"]==button[1][1]["text"]=="O" or button[1][1]["text"]==button[2][2]["text"]=="O" or button[0][0]["text"]==button[2][2]["text"]=="O":
             for k in range(3):
                 if cant[k][k]==0:
                     button[k][k]["text"]="X"
                     cant[k][k]+=1
                     t=1
                     break
-           elif button[0][2]["text"]==button[1][1]["text"]=="O" or button[1][1]["text"]==button[2][0]["text"]=="O" or button[0][2]["text"]==button[2][0]["text"]=="O" :
+       if t==0:
+           if button[0][2]["text"]==button[1][1]["text"]=="O" or button[1][1]["text"]==button[2][0]["text"]=="O" or button[0][2]["text"]==button[2][0]["text"]=="O" :
             if cant[0][2]==0:
                button[0][2]["text"]="X"
                cant[0][2]+=1
@@ -192,7 +204,7 @@ def change(x,y):
                      break
                break
             
-     elif t==0:
+     elif t==0 and flag==0:
         if cant[i][j]==0:
             button[i][j]["text"]="X"
             cant[i][j]+=1
@@ -207,73 +219,49 @@ def change(x,y):
         
      if count>2 and flag==0:
         for a in range(3):
-          if button[a][0]["text"]==button[a][1]["text"] and button[a][1]["text"]==button[a][2]["text"]:
+          if button[a][0]["text"]==button[a][1]["text"] and button[a][1]["text"]==button[a][2]["text"] and flag==0:
             if button[a][0]["text"]=="X":
               print "Computer wins."
               flag=1
+             
             elif button[a][0]["text"]=="O":
               print "Player wins."
               flag=1
-          elif button[0][a]["text"]==button[1][a]["text"] and button[1][a]["text"]==button[2][a]["text"]:
+              
+          elif button[0][a]["text"]==button[1][a]["text"] and button[1][a]["text"]==button[2][a]["text"] and flag==0:
             if button[0][a]["text"]=="X":
               print "Computer wins."
               flag=1
+              
             elif button[0][a]["text"]=="O":
               print "Player wins."
               flag=1
-          elif button[0][0]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][2]["text"]:
+              
+        if button[0][0]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][2]["text"] and flag==0:
             if button[0][0]["text"]=="X":
               print "Computer wins."
               flag=1
+              
             elif button[0][0]["text"]=="O":
               print "Player wins."
               flag=1
-            break
-          elif button[0][2]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][0]["text"]:
+              
+        elif button[0][2]["text"]==button[1][1]["text"] and button[1][1]["text"]==button[2][0]["text"] and flag==0:
             if button[0][2]["text"]=="X":
               print "Computer wins."
               flag=1
+              
             elif button[0][2]["text"]=="O":
               print "Player wins."
               flag=1
-            break
-          elif count==5:
+              
+        elif count==5 and flag==0:
               print "It's a draw."
               flag=1
-              break
-          elif flag==1:
-              break
-            
+              
+        
 def goodbye():
     start.destroy()
-def script():
- 
- global count
- count=0
- global cant 
-
- for r in range(3):
-    for c in range(3):
-        cant[r][c]=0
-
- flag=0
-
- button_frame.columnconfigure(0,weight=1)
- button_frame.columnconfigure(1,weight=1)
- button_frame.rowconfigure(0,weight=1)
- button_frame.rowconfigure(1,weight=1)
- button_frame.rowconfigure(2,weight=1)
-
- button = [[0 for r in range(3)]for c in range(3)]
- button_number = 1
- for r in range(3):
-    for c in range(3):
-        button[r][c]= Tkinter.Button(button_frame, text = " " , command = lambda a=r,b=c:change(a,b))
-        #button[r][c].grid(row=r, column=c, sticky="ew")
-        button[r][c].grid(row=r,column=c,sticky=Tkinter.W+Tkinter.E)
-        button_number += 1
-
-
 
 
  #result=Tkinter.Button(start,text="Result",command = result)
@@ -303,8 +291,7 @@ for r in range(3):
 
 
 
-playagain=Tkinter.Button(start,text="Play Again!",command = script)
-playagain.pack()
+
 
 C = Tkinter.Button(start, text="Quit", command = goodbye)
 C.pack()
