@@ -1,3 +1,4 @@
+#Player 1 vs Player 2
 import Tkinter
 import tkMessageBox
 from Tkinter import *
