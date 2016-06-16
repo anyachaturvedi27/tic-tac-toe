@@ -1,4 +1,4 @@
-#hello
+#Computer vs Player
 import Tkinter
 import tkMessageBox
 from Tkinter import *
